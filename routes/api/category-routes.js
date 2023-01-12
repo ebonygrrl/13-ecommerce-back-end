@@ -28,19 +28,18 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', (req, res) => {
 
-  // req.body should look like this...
-  // {
-  // 	"category_name": "Sports"
-  // }
-  // {
-  // 	"category_name": "Appliances"
-  // }
+/* req.body should look like this...
+{
+  "category_name": "Sports"
+}
+{
+  "category_name": "Appliances"
+}
+*/
 
   // create a new category
   Category.create(req.body)
     .then((category) => {
-      console.log(req.body);
-      console.log(category);
       // if no product tags, just respond
       res.status(200).json(category);
     })
@@ -53,6 +52,18 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(req.body, {
+    where: {
+      id: req.params.id,
+    }
+  })
+  .then(catName => {
+    res.status(200).json(catName);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(400).json(err);
+  });
 });
 
 router.delete('/:id', (req, res) => {
