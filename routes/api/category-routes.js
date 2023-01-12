@@ -32,9 +32,6 @@ router.post('/', (req, res) => {
 {
   "category_name": "Sports"
 }
-{
-  "category_name": "Appliances"
-}
 */
 
   // create a new category
@@ -68,6 +65,18 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id
+    },
+      force: true
+  }).then(() => {
+    const msg = 'Category has been deleted.';
+    res.status(200).json(msg);
+  })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
 });
 
 module.exports = router;
