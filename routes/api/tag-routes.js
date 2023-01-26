@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then(tagName => {
-    res.status(200).json(tagName);
+    res.status(200).json({message: `Tag name has been updated to ${tagName.tag_name}!`, tagName});
   })
   .catch((err) => {
     console.log(err);
@@ -81,10 +81,10 @@ router.delete('/:id', (req, res) => {
     },
       force: true
   }).then(() => {
-    const msg = 'Tag has been deleted.';
-    res.status(200).json(msg);
+    res.status(200).json({message: `The tag has been deleted!`});
   })
   .catch((err) => {
+    console.log(err);
     res.status(400).json(err);
   });
 });
