@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
   // create a new category
   Category.create(req.body)
     .then(catName => { // return details of query
-      res.status(200).json({message: `${catName.category_name} has been created!`, catName});
+      res.status(200).json(catName);
     })
     .catch((err) => {
       console.log(err);
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then(catName => {
-    res.status(200).json({message: `Category name has been updated to ${catName.category_name}!`, catName});
+    res.status(200).json(catName);
   })
   .catch((err) => {
     console.log(err);
