@@ -1,6 +1,7 @@
 # 13 E-commerce Back End
 
 ## Table of Contents
+
 1. [Description](#desc)
 2. [Installation](#install)
 3. [Usage](#usage)
@@ -9,52 +10,32 @@
 
 <a name="desc"></a>
 ## Description 
+
 Build the back end for an e-commerce site using Express.js API and configure it to use Sequelize to interact with a MySQL database.
 
 <a name="install"></a> 
 ## Installation
 
-1. After cloning this repo, install Node dependencies by entering `npm i` into your terminal.
-2. Update database credentials by entering your MySQL password located utils > connection.js.
-3. Install the database by sourcing the schema located db > schema.sql.
-4. Seed the database with the data provided located db > seeds.sql.
-5. Initiate app by entering `node index.js` or `node .` into your terminal.
+1. Clone this repo and update database credentials by entering your MySQL password located .env.EXAMPLE.
+2. Rename the file to ".env".
+3. Upload SQL script to your database, which is located in db > schema.sql.
+4. Seed the database by entering `npm run seed` into your terminal.
+5. Install this application's dependencies by entering `npm i` into your terminal.
+6. Invoke app by entering `node server.js` into your terminal.
 
 <a name="usage"></a> 
 ## Usage
-Once the application begins, choose an option from the main menu by using the up and down arrows and pressing enter.
 
-* View All Departments
-* View All Roles
-* View All Employees
-* View All Managers
-* View Employees by Department
-* Add a Department
-* Add a Role
-* Add An Employee
-* Update Employee
-* Delete Department
-* Delete Role
-* Delete Employee
-* View Budget
-* Exit
+- Open Insomnia Core to test CRUD on products, categories and tags.
 
 <a name="demo"></a> 
 ## Demo
-Here's a [video](https://youtu.be/nFIlcVQHYB8) of the application in use.
+
+Here's a [video](https://youtu.be/nFIlcVQHYB8) of the application in use on Insomnia Core.
 
 [![Video thumbnail](./public/img/youtube-screenshot.jpg)](https://youtu.be/nFIlcVQHYB8)
 
-A few screenshots of this application in action.
-
-[![Main Menu](./public/img/main-menu.jpg)]
-
-[![Main Menu](./public/img/view-budget.jpg)]
-
-Working through the View Budget query.
-
-[![MySQL Workbench]](./public/img/sql-query.jpg)]
-
 <a name="license"></a> 
 ## License
+
 All code is released under the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html).
