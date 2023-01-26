@@ -26,14 +26,14 @@ Build the back end for an e-commerce site using Express.js API and configure it 
 <a name="usage"></a> 
 ## Usage
 
-- Open Insomnia Core to test CRUD on products, categories and tags.
+- Use Insomnia Core to test CRUD on products, categories and tags.
 
 <a name="demo"></a> 
 ## Demo
 
-Here's a [video](https://youtu.be/nFIlcVQHYB8) of the application in use on Insomnia Core.
+Here's a [video](https://youtu.be/jHAHlcqZ-iI) of the application in use on Insomnia Core.
 
-[![Video thumbnail](./public/img/youtube-screenshot.jpg)](https://youtu.be/nFIlcVQHYB8)
+[![Video thumbnail](./demo.jpg)](https://youtu.be/jHAHlcqZ-iI)
 
 <a name="license"></a> 
 ## License
