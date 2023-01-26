@@ -6,7 +6,8 @@ const { Category, Product } = require('../../models');
 router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
-  Category.findAll({ include: [Product] }).then( catData => {
+  Category.findAll({ include: [Product] })
+  .then( catData => {
     res.status(200).json(catData);
   });
 });
@@ -15,7 +16,7 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const catData = await Category.findByPk(req.params.id, { include:  [Product] });
+    const catData = await Category.findByPk(req.params.id, { include: [Product] });
     if (!catData) {
       res.status(404).json({ message: 'There is no category with this id!' });
       return;
@@ -36,11 +37,9 @@ router.post('/', (req, res) => {
 
   // create a new category
   Category.create(req.body)
-    .then((category) => {
-      // if no product tags, just respond
-      res.status(200).json(category);
+    .then(catName => { // return details of query
+      res.status(200).json({message: `${catName.category_name} has been created!`, catName});
     })
-    .then((catIds) => res.status(200).json(catIds))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -55,7 +54,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then(catName => {
-    res.status(200).json(catName);
+    res.status(200).json({message: `Category name has been updated to ${catName.category_name}!`, catName});
   })
   .catch((err) => {
     console.log(err);
@@ -71,10 +70,10 @@ router.delete('/:id', (req, res) => {
     },
       force: true
   }).then(() => {
-    const msg = 'Category has been deleted.';
-    res.status(200).json(msg);
+    res.status(200).json({message: `The category has been deleted!`});
   })
   .catch((err) => {
+    console.log(err);
     res.status(400).json(err);
   });
 });

@@ -6,7 +6,6 @@ const { Tag, Product, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
-
   Tag.findAll({ include: { 
       model: Product, 
       through: ProductTag, 
@@ -29,10 +28,11 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!tagData) {
-      res.status(404).json({ message: 'No tags with this id found!' });
+      res.status(404).json({ message: 'There is no tag with this id!' });
     }
     res.status(200).json(tagData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 
   // create a new tag
   Tag.create(req.body)
-    .then((tag) => {
+    .then(tag => {
       res.status(200).json(tag);
     })
     .catch((err) => {
@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then(tagName => {
-    res.status(200).json(tagName);
+    res.status(200).json({message: `Tag name has been updated to ${tagName.tag_name}!`, tagName});
   })
   .catch((err) => {
     console.log(err);
@@ -81,10 +81,10 @@ router.delete('/:id', (req, res) => {
     },
       force: true
   }).then(() => {
-    const msg = 'Tag has been deleted.';
-    res.status(200).json(msg);
+    res.status(200).json({message: `The tag has been deleted!`});
   })
   .catch((err) => {
+    console.log(err);
     res.status(400).json(err);
   });
 });
